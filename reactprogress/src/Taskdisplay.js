@@ -4,7 +4,7 @@ import Progresscircular from './Progresscircular';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import './Taskdisplay.css';
-import { CardGroup } from 'react-bootstrap';
+import { CardDeck } from 'react-bootstrap';
 
 class Taskdisplays extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class Taskdisplays extends Component {
 
     componentDidMount() {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/manu@gmail.com/Android Developer')
+        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/teja@gmail.com/Full stack Developer')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -59,7 +59,7 @@ class Taskdisplays extends Component {
                     </div>
                     <br/><br/><br/><br/><br/><br/><br/><br/>
                     <div>
-                        <CardGroup>
+                        <CardDeck>
                             {items.tasks.map(tsk => (
                                 <Card border = "primary" bg="secondary" style={{ width: '22rem',backgroundColor:"black" }}>
                                     <Card.Header style = {{color:"white",fontSize:20}}>{tsk.skillName}</Card.Header>
@@ -75,7 +75,7 @@ class Taskdisplays extends Component {
                                     </Card.Body>
                                     </Card>
                             ))}
-                        </CardGroup>
+                        </CardDeck>
                     </div>
                 </div>
             );
