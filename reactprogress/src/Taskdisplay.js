@@ -27,14 +27,15 @@ class Taskdisplays extends Component {
                     isLoaded: true,
                     items: json,
                     tasks: null
+                }, () => {
+                    var tdays = 0;
+                    var cdays = 0;
+                    for(var char in this.state.items.tasks){
+                        tdays += this.state.items.tasks[char].totaldays;
+                        cdays += this.state.items.tasks[char].complete;
+                        }
+                        this.setState({ prog_totaldays: tdays, prog_completeddays: cdays });
                 })
-                var tdays = 0;
-                var cdays = 0;
-                for(var char in this.state.items.tasks){
-                    tdays += this.state.items.tasks[char].totaldays;
-                    cdays += this.state.items.tasks[char].complete;
-                }
-                this.setState({ prog_totaldays: tdays, prog_completeddays: cdays });
             })
             .catch({
 
