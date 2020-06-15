@@ -8,7 +8,7 @@ class Progresscircular extends Component {
         const value = Math.round((this.props.t / this.props.x)*100);
         const circular = <CircularProgressbar value={value} maxvalue={1} text={`${value}%`} />;
         return (
-            <div style = {{ width: 180,position:"absolute",left:680,top:80}}>
+            <div style = {{ width: 180,position:"absolute",left:680,top:100}}>
                 {circular}
             </div>
         );

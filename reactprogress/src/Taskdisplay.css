@@ -11,3 +11,13 @@ div{
 .tasks{
     color: ghostwhite;
 }
+@media (min-width: 1200px)
+{
+    .container
+    {
+        max-width: 1300px;
+    }
+}
+.slick-prev:before, .slick-next:before {
+    color:black !important;
+}

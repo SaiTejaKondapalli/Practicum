@@ -4,7 +4,11 @@ import Progresscircular from './Progresscircular';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import './Taskdisplay.css';
-import { CardDeck } from 'react-bootstrap';
+import { Container,Col } from 'react-bootstrap';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 
 class Taskdisplays extends Component {
     constructor(props) {
@@ -20,7 +24,7 @@ class Taskdisplays extends Component {
 
     componentDidMount() {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/phani1@gmail.com/Aptitude')
+        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/saiteja@gmail.com/Quantitative Aptitude')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -28,6 +32,7 @@ class Taskdisplays extends Component {
                     items: json,
                     tasks: null
                 }, () => {
+                    // console.log(this.state.isLoaded)
                     var tdays = 0;
                     var cdays = 0;
                     for(var char in this.state.items.tasks){
@@ -44,6 +49,14 @@ class Taskdisplays extends Component {
 
     render() {
         var { isLoaded, items } = this.state;
+        var settings = {
+            dots: true,
+            autoplay : true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          };
         if (!isLoaded) {
             return <div>Loading...</div>;
         }
@@ -53,16 +66,20 @@ class Taskdisplays extends Component {
                     <div className="bar">
                         {items.email}<br/>
                         <strong>Goal : </strong>{items.goal}<br />
-                        <strong>OVERALL STATUS</strong><br/><br/>
+                        <strong>OVERALL STATUS</strong>
                     </div>
                     <div>
                         <Progresscircular x={this.state.prog_totaldays} t={this.state.prog_completeddays} />
                     </div>
-                    <br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <div>
-                        <CardDeck>
-                            {items.tasks.map(tsk => (
-                                <Card border = "primary" bg="secondary" style={{ width: '22rem',backgroundColor:"black" }}>
+                        <Container className = "container">
+                        <Slider {...settings}>
+                        {/* <Card> */}
+                                {items.tasks.map(tsk => (
+
+                                        <Col>
+                                <Card border = "primary" bg="secondary" style={{ width: '25rem' }}>
                                     <Card.Header style = {{color:"white",fontSize:20}}>{tsk.skillName}</Card.Header>
                                     <Card.Body>
                                         <Card.Text style = {{color:"white"}}>
@@ -74,9 +91,13 @@ class Taskdisplays extends Component {
                                             <Button variant="primary">Edit</Button>
                                         </Card.Text>
                                     </Card.Body>
-                                </Card>
+                                            </Card>
+                                            </Col>
+
                             ))}
-                        </CardDeck>
+                        {/* </Card> */}
+                            </Slider>
+                            </Container>
                     </div>
                 </div>
             );
