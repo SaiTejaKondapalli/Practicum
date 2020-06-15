@@ -20,7 +20,7 @@ class Taskdisplays extends Component {
 
     componentDidMount() {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/teja@gmail.com/Full stack Developer')
+        fetch(proxyurl + 'https://goaltrackerapi.herokuapp.com/tasks/phani1@gmail.com/Aptitude')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -74,7 +74,7 @@ class Taskdisplays extends Component {
                                             <Button variant="primary">Edit</Button>
                                         </Card.Text>
                                     </Card.Body>
-                                    </Card>
+                                </Card>
                             ))}
                         </CardDeck>
                     </div>
