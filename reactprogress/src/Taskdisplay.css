@@ -18,6 +18,19 @@ div{
         max-width: 1300px;
     }
 }
+/* .col{
+    padding-left: 77px;
+} */
+
 .slick-prev:before, .slick-next:before {
     color:black !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color : ghostwhite;
+}
+
+.slick-slide {
+    /* width: 500px; */
+    box-sizing: border-box;
 }
